@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('venv') {
+    stage('Start') {
       steps {
-        sh 'source .venv/bin/activate'
+        echo 'Jenkins Pipeline Start'
       }
     }
 
