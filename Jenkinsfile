@@ -1,5 +1,10 @@
 pipeline {
   agent any
+
+  environment {
+    DOCKER_NAME = "jenkinstest"
+  }
+
   stages {
     stage('Start') {
       steps {
@@ -15,7 +20,7 @@ pipeline {
 
     stage('Run Docker') {
       steps {
-        sh 'docker run -it -d jenkinstest --name="jenkinstest"'
+        sh 'docker run -it -d jenkinstest --name=${DOCKER_NAME}'
       }
     }
 
