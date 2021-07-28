@@ -26,7 +26,7 @@ pipeline {
 
     stage('Exec Docker') {
       steps {
-        sh 'docker exec -it jenkinstest /bin/bash'
+        sh 'docker exec --tty jenkinstest /bin/bash'
       }
     }
 
