@@ -1,0 +1,7 @@
+/data
+/model
+/plt
+
+.gitignore
+.git
+.python-version
