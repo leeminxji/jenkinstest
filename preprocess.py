@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 from typing import Tuple
+import os
 
 def get_data() -> Tuple[np.ndarray, np.ndarray]:
     data_file = "raw_data/station.csv"
@@ -30,6 +31,7 @@ series -= mean
 std = series.std(axis=0)
 series /= std
 
+os.makedirs('./data', exist_ok=True)
 f = open("./data/meanstd.txt", "w")
 f.write("%f, %f" %(mean, std))
 f.close()

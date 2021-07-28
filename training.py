@@ -58,6 +58,7 @@ model.compile(loss=tf.keras.losses.Huber(),
 model.summary()
 
 # Pretrained Model
+os.makedirs('./model', exist_ok=True)
 model_path = "model/train.ckpt"
 
 if os.path.exists("model/checkpoint"):
@@ -77,6 +78,8 @@ loss_ax.plot(history.history['val_loss'], 'tab:blue', label='val_loss')
 loss_ax.set_xlabel('epoch')
 loss_ax.set_ylabel('loss')
 loss_ax.legend(loc='upper left')
+
+os.makedirs('./plt', exist_ok=True)
 plt.savefig('./plt/training.png')
 
 
