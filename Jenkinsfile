@@ -26,21 +26,15 @@ pipeline {
       }
     }
 
-    stage('Exec Docker') {
-      steps {
-        sh 'docker exec --tty jenkinstest /bin/bash'
-      }
-    }
-
     stage('Preprocess') {
       steps {
-        sh 'python preprocess.py'
+        sh 'docker exec ${DOCKER_NAME} python preprocess.py'
       }
     }
 
     stage('Training') {
       steps {
-        sh 'python training.py'
+        sh 'docker exec ${DOCKER_NAME} python training.py'
       }
     }
 
