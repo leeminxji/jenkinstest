@@ -20,7 +20,7 @@ pipeline {
 
     stage('Run Docker') {
       steps {
-        sh 'docker run -it -d jenkinstest --name=${DOCKER_NAME}'
+        sh 'docker run -it -d --name=${DOCKER_NAME} jenkinstest'
       }
     }
 
