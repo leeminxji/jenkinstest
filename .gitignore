@@ -1,2 +1,7 @@
 # pyenv
 .python-version
+
+# 
+/model
+/plt
+/data
