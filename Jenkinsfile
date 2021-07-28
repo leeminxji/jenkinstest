@@ -20,6 +20,8 @@ pipeline {
 
     stage('Run Docker') {
       steps {
+        sh 'docker stop jenkinstest'
+        sh 'docker rm jenkinstest'
         sh 'docker run -it -d --name=${DOCKER_NAME} jenkinstest'
       }
     }
