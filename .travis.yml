@@ -1,13 +1,11 @@
 language: python
-python:
-  - "3.8"
-install:
-  - pip install --upgrade pip
-  - pip install -r requirements.txt
-script:
+services:
+  - docker
+before_install:
   - docker build -t jenkinstest .
   - docker stop jenkinstest
   - docker rm jenkinstest
   - docker run -it -d --name=jenkinstest jenkinstest
+script:
   - docker exec jenkinstest python preprocess.py
   - docker exec jenkinstest python training.py
