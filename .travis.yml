@@ -3,7 +3,8 @@ services:
   - docker
 before_install:
   - docker build -t jenkinstest .
-  - docker stop jenkinstest || true && docker rm jenkinstest || true
+  - docker stop jenkinstest || true
+  - docker rm jenkinstest || true
   - docker run -it -d --name=jenkinstest jenkinstest
 script:
   - docker exec jenkinstest python preprocess.py
