@@ -1,8 +1,6 @@
 language: python
 python:
   - "3.8"
-env:
-  - DOCKER_NAME = jenkinstest
 install:
   - pip install --upgrade pip
   - pip install -r requirements.txt
@@ -10,6 +8,6 @@ script:
   - docker build -t jenkinstest .
   - docker stop jenkinstest
   - docker rm jenkinstest
-  - docker run -it -d --name=${DOCKER_NAME} jenkinstest
-  - docker exec ${DOCKER_NAME} python preprocess.py
-  - docker exec ${DOCKER_NAME} python training.py
+  - docker run -it -d --name=jenkinstest jenkinstest
+  - docker exec jenkinstest python preprocess.py
+  - docker exec jenkinstest python training.py
