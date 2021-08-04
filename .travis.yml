@@ -4,10 +4,10 @@ python:
 services:
   - docker
 before_install:
-  - docker build -t jenkinstest .
-  - docker stop jenkinstest || true
-  - docker rm jenkinstest || true
-  - docker run -it -d --name=jenkinstest jenkinstest
+  - docker build -t jtdocker .
+  - docker stop jtdocker || true
+  - docker rm jtdocker || true
+  - docker run -it -d --name=jtdocker jtdocker
 script:
-  - docker exec jenkinstest python preprocess.py
-  - docker exec jenkinstest python training.py
+  - docker exec jtdocker python preprocess.py
+  - docker exec jtdocker python training.py

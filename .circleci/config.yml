@@ -4,9 +4,9 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: docker build -t jenkinstest .
-      - run: docker stop jenkinstest || true
-      - run: docker rm jenkinstest || true
-      - run: docker run -it -d --name=jenkinstest jenkinstest
-      - run: docker exec jenkinstest python preprocess.py
-      - run: docker exec jenkinstest python training.py
+      - run: docker build -t jtdocker .
+      - run: docker stop jtdocker || true
+      - run: docker rm jtdocker || true
+      - run: docker run -it -d --name=jtdocker jtdocker
+      - run: docker exec jtdocker python preprocess.py
+      - run: docker exec jtdocker python training.py

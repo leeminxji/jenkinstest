@@ -2,27 +2,27 @@ pipeline {
   agent any
 
   environment {
-    DOCKER_NAME = "jenkinstest"
+    DOCKER_NAME = "jtdocker"
   }
 
   stages {
     stage('Start') {
       steps {
-        echo '[jenkinstest] Start'
+        echo '[jtdocker] Start'
       }
     }
 
     stage('Build Docker') {
       steps {
-        sh 'docker build -t jenkinstest .'
+        sh 'docker build -t jtdocker .'
       }
     }
 
     stage('Run Docker') {
       steps {
-        sh 'docker stop jenkinstest'
-        sh 'docker rm jenkinstest'
-        sh 'docker run -it -d --name=${DOCKER_NAME} jenkinstest'
+        sh 'docker stop jtdocker'
+        sh 'docker rm jtdocker'
+        sh 'docker run -it -d --name=${DOCKER_NAME} jtdocker'
       }
     }
 
@@ -40,7 +40,7 @@ pipeline {
 
     stage('End') {
       steps {
-        echo '[jenkinstest] End'
+        echo '[jtdocker] End'
       }
     }
 
