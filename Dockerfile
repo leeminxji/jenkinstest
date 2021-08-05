@@ -1,11 +1,12 @@
-FROM nvidia/cuda:10.2-cudnn7-runtime-ubuntu18.04
+ARG BASE_IMAGE=nvidia/cuda:10.2-cudnn7-runtime-ubuntu18.04
+FROM  ${BASE_IMAGE}
+ARG BASE_IMAGE
 
 RUN apt-get update \
     && apt-get remove --purge -y python3.7
 
 # Install Python
-RUN apt-get update && \
-    apt-get install --no-install-recommends -y \
+RUN apt-get install --no-install-recommends -y \
     python3.8 python3-pip python3.8-dev python3.8-venv
 
 # RUN : \
@@ -32,3 +33,7 @@ WORKDIR /app
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+RUN chmod u+x /app/scripts/run.sh
+
+ENTRYPOINT [ "/app/scripts/run.sh" ]
+CMD []
