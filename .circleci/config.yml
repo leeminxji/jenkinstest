@@ -4,6 +4,6 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: yes | docker image prune
+      - run: docker image prune --force
       - run: docker build -t jtdocker .
       - run: docker run --rm --name=jtdocker jtdocker
