@@ -5,9 +5,5 @@ services:
   - docker
 before_install:
   - docker build -t jtdocker .
-  - docker stop jtdocker || true
-  - docker rm jtdocker || true
-  - docker run -it -d --name=jtdocker jtdocker
 script:
-  - docker exec jtdocker python preprocess.py
-  - docker exec jtdocker python training.py
+  - docker run --rm --name=jtdocker jtdocker

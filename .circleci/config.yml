@@ -5,8 +5,4 @@ jobs:
     steps:
       - checkout
       - run: docker build -t jtdocker .
-      - run: docker stop jtdocker || true
-      - run: docker rm jtdocker || true
-      - run: docker run -it -d --name=jtdocker jtdocker
-      - run: docker exec jtdocker python preprocess.py
-      - run: docker exec jtdocker python training.py
+      - run: docker run --rm --name=jtdocker jtdocker
