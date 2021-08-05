@@ -14,7 +14,7 @@ pipeline {
 
     stage('Build Docker') {
       steps {
-        sh 'docker image prune'
+        sh 'yes | docker image prune'
         sh 'docker build -t ${DOCKER_NAME} .'
       }
     }
