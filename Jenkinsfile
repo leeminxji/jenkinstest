@@ -8,12 +8,13 @@ pipeline {
   stages {
     stage('Start') {
       steps {
-        echo '[${DOCKER_NAME}] Start'
+        echo '[Jenkinstest] Start'
       }
     }
 
     stage('Build Docker') {
       steps {
+        sh 'docker image prune'
         sh 'docker build -t ${DOCKER_NAME} .'
       }
     }
@@ -26,7 +27,7 @@ pipeline {
 
     stage('End') {
       steps {
-        echo '[${DOCKER_NAME}] End'
+        echo '[Jenkinstest] End'
       }
     }
 
